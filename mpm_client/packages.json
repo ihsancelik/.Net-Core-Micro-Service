@@ -1,0 +1,10 @@
+{
+    "Packages": [
+        {
+            "Platform": "windows",
+            "Identifier": "qt5",
+            "Name": "Qt5Core.dll",
+            "Version": "1.1.2.2"
+        }
+    ]
+}

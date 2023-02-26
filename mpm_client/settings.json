@@ -1,0 +1,4 @@
+{
+    "BaseApiUrl": "http://localhost:5010",
+    "GetPackageApiUrl": "package/getUrl"
+}
