@@ -1,0 +1,160 @@
+<template>
+  <ValidationObserver ref="observer">
+    <v-card class="pa-10 pt-5" elevation="5">
+      <a @click="close(false)">
+        <v-icon style="float: right;">mdi-close-circle</v-icon>
+      </a>
+      <h2 class="text-md-center">{{ translator("newSlider") }}</h2>
+      <hr class="mb-3" />
+
+      <v-form>
+        <v-row id="rows1">
+          <v-col cols="12" md="8">
+            <v-file-input
+              prepend-inner-icon="mdi-camera"
+              accept="image/*"
+              :placeholder="translator('sliderImage')"
+              @change="uploadImage"
+            ></v-file-input>
+          </v-col>
+          <v-col cols="12" md="4">
+            <img
+              id="vimg"
+              src="/miracle-logo.png"
+              style="display: inline-block; background-size: contain; max-height: 75px; height: 75px; margin-left: 10%;"
+              alt=""
+            />
+          </v-col>
+        </v-row>
+
+        <v-row class="rows">
+          <v-col cols="12" md="6">
+            <ValidationProvider #default="{ errors }" :name="translator('name')" rules="required|max:128">
+              <v-text-field
+                v-model="slider.name"
+                :error-messages="errors"
+                :label="translator('name')"
+                required
+                outlined
+                counter="128"
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+          <v-col cols="12" md="6">
+            <ValidationProvider #default="{ errors }" :name="translator('order')" rules="required|max:32">
+              <v-text-field
+                v-model="slider.order"
+                :error-messages="errors"
+                :label="translator('order')"
+                required
+                outlined
+                counter="32"
+              ></v-text-field>
+            </ValidationProvider>
+          </v-col>
+        </v-row>
+
+        <v-row class="rows">
+          <v-col cols="12" md="6">
+            <v-switch v-model="slider.isActive" :label="translator('isActive')" required outlined></v-switch>
+          </v-col>
+        </v-row>
+
+        <hr class="mb-2" />
+
+        <v-btn @click.prevent="sliderCreate" color="primary" dark class="v-btn--block v-size--large mb-2">
+          {{ translator("create") }}
+        </v-btn>
+      </v-form>
+    </v-card>
+
+    <v-dialog v-model="dialogEnable" max-width="400" persistent :key="dialogKey">
+      <component :is="selectedComponent" v-bind="componentProps" @closed="closeDialog" />
+    </v-dialog>
+  </ValidationObserver>
+</template>
+
+<script>
+import { extend, ValidationObserver, ValidationProvider, setInteractionMode } from "vee-validate";
+import * as rules from "vee-validate/dist/rules";
+import MessageBox from "@/helpers/components/MessageBox";
+import SliderService from "@/services/SliderService";
+
+setInteractionMode("eager");
+extend("max", { ...rules.max, message: "{_field_} may not be greater than {length} characters" });
+extend("required", { ...rules.required, message: "{_field_} can not be empty" });
+
+export default {
+  data() {
+    return {
+      slider: {},
+      dialog: false,
+      signalModel: {
+        changes: false,
+        returnValues: null,
+      },
+
+      dialogEnable: false,
+      dialogKey: 0,
+      selectedComponent: "",
+      componentProps: null,
+    };
+  },
+  components: {
+    ValidationObserver,
+    ValidationProvider,
+  },
+  methods: {
+    async sliderCreate() {
+      let result = await this.$refs.observer.validate();
+      if (result) {
+        let formData = new FormData();
+        for (let [key, value] of Object.entries(this.slider)) {
+          formData.append(`${key}`, `${value}`);
+        }
+        formData.append("sliderImage", this.slider.sliderImage);
+        let response = await new SliderService().create(formData);
+        if (response.success) this.close("closed", true);
+        else {
+          this.selectedComponent = MessageBox;
+          this.componentProps = {
+            messageTitleProp: this.translator("failed"),
+            messageTextProp: response.message,
+          };
+          this.dialogEnable = true;
+          this.dialogKey += 1;
+        }
+      }
+    },
+    uploadImage(image) {
+      this.slider.sliderImage = image;
+      let reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById("vimg").setAttribute("src", e.target.result.toString());
+      };
+      reader.readAsDataURL(image);
+    },
+    closeDialog() {
+      this.dialogEnable = false;
+      this.dialogKey += 1;
+    },
+    close(changes) {
+      this.signalModel.changes = changes;
+      this.$emit("closed", this.signalModel);
+    },
+  },
+  created() {
+    this.slider.isActive = false;
+  },
+};
+</script>
+
+<style scoped>
+.rows {
+  margin-bottom: -5%;
+}
+
+#rows1 {
+  margin-bottom: -3%;
+}
+</style>

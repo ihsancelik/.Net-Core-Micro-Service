@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>x64</Platforms>
+    <OutputPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api</OutputPath>
+    <Company>MiracleSoftware</Company>
+    <Authors>MiracleSoftware</Authors>
+    <UserSecretsId>e8c3a184-9cc0-473e-981d-5a721955b51b</UserSecretsId>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityModel" Version="4.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" Version="3.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="microsoft.aspnetcore.http.features" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.1" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.22" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ApiLogs\" />
+    <Folder Include="wwwroot\LibFiles\" />
+    <Folder Include="wwwroot\StaticFiles\Account\ProfilePhotos\" />
+    <Folder Include="wwwroot\UserMachines\" />
+    <Folder Include="wwwroot\Setups\Products\" />
+    <Folder Include="wwwroot\Setups\" />
+    <Folder Include="wwwroot\Setups\Plugins\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Library.Responses">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Responses.dll</HintPath>
+    </Reference>
+	  <Reference Include="Library.Helpers">
+		  <HintPath>$(AITLibs)\$(Configuration)\Library.Helpers.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Library.Dependency">
+		  <HintPath>$(AITLibs)\$(Configuration)\Library.Dependency.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Library.Routes">
+		  <HintPath>$(AITLibs)\$(Configuration)\Library.Routes.dll</HintPath>
+	  </Reference>
+
+	  <Reference Include="Miracle.Core.Api.Database">
+		  <HintPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api.Database.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Miracle.Core.Api.Models">
+		  <HintPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api.Models.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Miracle.Core.Api.Services">
+		  <HintPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api.Services.dll</HintPath>
+	  </Reference>
+  </ItemGroup>
+</Project>

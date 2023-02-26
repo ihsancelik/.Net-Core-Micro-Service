@@ -1,0 +1,4 @@
+Miracle.Core.Api.Adapters
+Adapter.Miracle.Api
+x64
+Release

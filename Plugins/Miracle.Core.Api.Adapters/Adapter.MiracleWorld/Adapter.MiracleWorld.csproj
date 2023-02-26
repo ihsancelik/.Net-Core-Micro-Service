@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>x64</Platforms>
+    <OutputPath>$(AITLibs)\$(Configuration)</OutputPath>
+    <Company>MiracleSoftware</Company>
+    <Authors>MiracleSoftware</Authors>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Library.Helpers">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Helpers.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Library.Routes">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Routes.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Library.Responses">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Responses.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Miracle.Core.Api.Database">
+      <HintPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api.Database.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Miracle.Core.Api.Services">
+      <HintPath>$(AITLibs)\$(Configuration)\Miracle.Core.Api.Services.dll</HintPath>
+    </Reference>
+
+    <Reference Include="Library.Dependency">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Dependency.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+  </ItemGroup>
+
+</Project>

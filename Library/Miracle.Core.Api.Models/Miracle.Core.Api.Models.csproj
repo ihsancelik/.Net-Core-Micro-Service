@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Platforms>x64</Platforms>
+    <OutputPath>$(AITLibs)\$(Configuration)</OutputPath>
+    <Company>MiracleSoftware</Company>
+    <Authors>MiracleSoftware</Authors>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="3.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Library.Helpers">
+      <HintPath>$(AITLibs)\$(Configuration)\Library.Helpers.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

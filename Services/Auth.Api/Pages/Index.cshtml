@@ -1,0 +1,37 @@
+﻿@page
+@model Auth.Api.Pages.IndexModel
+@{
+}
+
+<div class="container">
+
+    <form method="post">
+
+        <div class="row mx-auto">
+
+            <label class="col-form-label">Username</label>
+            <input type="text" asp-for="Username" class="form-control" />
+
+            <label class="col-form-label">Password</label>
+            <input type="password" asp-for="Password" class="form-control" />
+
+            <button type="submit" class="btn btn-dark">Login</button>
+
+        </div>
+
+    </form>
+
+</div>
+
+<label>@Model.DevInfo</label>
+
+@if (Model.PageResponse != null)
+{
+    <label>@Model.PageResponse</label>
+
+}
+
+<script>
+    document.getElementById("layoutHeader").style.display = "none";
+    document.getElementById("layoutFooter").style.display = "none";
+</script>

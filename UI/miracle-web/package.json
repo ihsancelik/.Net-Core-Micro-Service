@@ -1,0 +1,69 @@
+{
+  "name": "miracle-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@aspnet/signalr": "^3.0.0-preview6.19307.2",
+    "@mdi/font": "^5.5.55",
+    "axios": "^0.20.0",
+    "ckeditor4-vue": "^0.2.0",
+    "core-js": "^3.6.5",
+    "devserver": "^0.2.5",
+    "lodash": "^4.17.20",
+    "material-design-icons": "^3.0.1",
+    "v-viewer": "^1.5.1",
+    "vee-validate": "^3.3.9",
+    "vue": "^2.6.12",
+    "vue-axios": "^2.1.5",
+    "vue-carousel-3d": "^0.2.0",
+    "vue-fullpage.js": "^0.1.7",
+    "vue-i18n": "^8.21.0",
+    "vue-image-previewer": "^0.1.4",
+    "vue-router": "^3.4.3",
+    "vuetify": "^2.3.9",
+    "vuex": "^3.5.1",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.4",
+    "@vue/cli-plugin-eslint": "^4.5.4",
+    "@vue/cli-service": "^4.5.4",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "prettier": "^2.0.5",
+    "sass": "^1.26.10",
+    "sass-loader": "^9.0.3",
+    "vue-cli-plugin-vuetify": "^2.0.7",
+    "vue-template-compiler": "^2.6.12",
+    "vuetify-loader": "^1.6.0"
+  },
+  "prettier": {
+    "endOfLine": "crlf",
+    "printWidth": 120
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

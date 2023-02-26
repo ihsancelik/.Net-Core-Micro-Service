@@ -1,0 +1,28 @@
+﻿@page
+@model Auth.Api.Pages.Admin.IndexModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Value</th>
+            <th scope="col">Multi Usage</th>
+            <th scope="col">Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tokenType in Model.TokenTypes)
+        {
+            <tr>
+                <td scope="row"> @tokenType.Id </td>
+                <td scope="row"> @tokenType.Value </td>
+                <td scope="row"> @tokenType.MultiUsage </td>
+                <td scope="row">
+                    <button class="btn btn-info">Edit</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
